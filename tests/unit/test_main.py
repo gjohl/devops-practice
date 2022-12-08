@@ -1,6 +1,6 @@
 import pytest
 
-from devopspractice.main import greeting
+from devopspractice.main import greeting, string_len
 from devopspractice.utils.exceptions import BadInputError
 
 
@@ -16,3 +16,14 @@ def test_greeting_raises(test_input, error_message):
     """Test that BadInputErrors are raised as expected."""
     with pytest.raises(BadInputError, match=error_message):
         greeting(test_input)
+
+
+@pytest.mark.parametrize('input_string,expected', [('Gurp', 4), ('Tilman', 6)])
+def test_string_len(input_string,expected):
+    assert string_len(input_string) == expected
+
+
+@pytest.mark.parametrize('input', [1, 1., [], {'a': 1}])
+def test_string_len_raises(input):
+    with pytest.raises(BadInputError, match="must be a string"):
+        string_len(input)

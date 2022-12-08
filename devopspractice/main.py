@@ -25,3 +25,23 @@ def greeting(name):
     print(greeting_string)
 
     return greeting_string
+
+
+def string_len(input_string):
+    """
+    Calculate the length of an input string.
+
+    Parameters
+    ----------
+    input_string: str
+        The string to check the length of.
+
+    Returns
+    -------
+    int
+        The number of characters in the input string
+    """
+    if not isinstance(input_string, str):
+        raise BadInputError("Input must be a string")
+
+    return len(input_string)
