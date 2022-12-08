@@ -14,5 +14,3 @@ class TestLenGreeting:
     def test_raises(self, test_input, error_message):
         with pytest.raises(BadInputError, match=error_message):
             string_len(greeting(test_input))
-
-
